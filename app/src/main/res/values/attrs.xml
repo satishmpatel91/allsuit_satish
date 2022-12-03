@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<declare-styleable name="SomeStyle">
+    <attr name="font" format="string" />
+</declare-styleable>-->
+    <declare-styleable name="DrawView">
+        <attr name="dv_draw_color" format="color"/>
+        <attr name="dv_draw_tool" format="enum">
+            <enum name="pen" value="0"/>
+            <enum name="line" value="1"/>
+            <enum name="rectangle" value="2"/>
+            <enum name="circle" value="3"/>
+        </attr>
+        <attr name="dv_draw_mode" format="enum">
+            <enum name="draw" value="0"/>
+            <enum name="text" value="1"/>
+            <enum name="eraser" value="2"/>
+        </attr>
+        <attr name="dv_draw_width" format="integer"/>
+        <attr name="dv_draw_alpha" format="integer"/>
+        <attr name="dv_draw_anti_alias" format="boolean"/>
+        <attr name="dv_draw_dither" format="boolean"/>
+        <attr name="dv_draw_style" format="enum">
+            <enum name="fill" value="0"/>
+            <enum name="fill_stroke" value="1"/>
+            <enum name="stroke" value="2"/>
+        </attr>
+        <attr name="dv_draw_corners" format="enum">
+            <enum name="butt" value="0"/>
+            <enum name="round" value="1"/>
+            <enum name="square" value="2"/>
+        </attr>
+        <attr name="dv_draw_font_family" format="enum">
+            <enum name="default_font" value="0"/>
+            <enum name="monospace" value="1"/>
+            <enum name="sans_serif" value="2"/>
+            <enum name="serif" value="3"/>
+        </attr>
+        <attr name="dv_draw_font_size" format="integer"/>
+        <attr name="dv_draw_enable_zoom" format="boolean"/>
+        <attr name="dv_draw_max_zoom_factor" format="float"/>
+        <attr name="dv_draw_zoomregion_scale" format="float"/>
+        <attr name="dv_draw_zoomregion_minscale" format="float"/>
+        <attr name="dv_draw_zoomregion_maxscale" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="TextViewOutline">
+        <attr name="outlineSize" format="dimension" />
+        <attr name="outlineColor" format="color|reference" />
+       <!-- <attr name="android:shadowRadius" />
+        <attr name="android:shadowDx" />
+        <attr name="android:shadowDy" />
+        <attr name="android:shadowColor" />-->
+    </declare-styleable>
+
+    <declare-styleable name="MagicTextView">
+        <attr name="innerShadowColor" format="color"/>
+        <attr name="innerShadowRadius" format="dimension"/>
+        <attr name="innerShadowDx" format="dimension"/>
+        <attr name="innerShadowDy" format="dimension"/>
+
+        <attr name="outerShadowColor" format="color"/>
+        <attr name="outerShadowRadius" format="dimension"/>
+        <attr name="outerShadowDx" format="dimension"/>
+        <attr name="outerShadowDy" format="dimension"/>
+
+        <attr name="typeface" format="string" />
+
+        <attr name="foreground" format="reference|color"/>
+        <attr name="background_color" format="reference|color"/>
+
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="strokeMiter" format="dimension" />
+        <attr name="strokeColor" format="color" />
+        <attr name="strokeJoinStyle">
+            <enum name="miter" value="0" />
+            <enum name="bevel" value="1" />
+            <enum name="round" value="2" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="StickerView">
+        <attr name="showIcons" format="boolean" />
+        <attr name="showBorder" format="boolean" />
+        <attr name="bringToFrontCurrentSticker" format="boolean" />
+        <attr name="borderColor" format="color"/>
+        <attr name="borderAlpha" format="integer"/>
+    </declare-styleable>
+</resources>

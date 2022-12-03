@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rang_dark"
+    android:padding="@dimen/_40dp"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/edText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250dp"
+        android:background="@drawable/rounded_edittext"
+        android:gravity="start|top"
+        android:hint="Add your text"
+        android:padding="@dimen/_20sp"
+        android:inputType="textMultiLine" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/_20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+
+
+        <Button
+            android:id="@+id/btCancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_green"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="CANCEL"
+            android:textColor="@color/rang"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btSave"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/border_plain"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="SAVE"
+            android:textColor="#FFF"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

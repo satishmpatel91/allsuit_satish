@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.allsuit.casual.suit.photo.TextActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/rvToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/rang"
+        android:orientation="horizontal"
+
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+
+            android:text="Add Your Text"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/imgDone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_effect"
+            android:src="@drawable/done_icon" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/frmSubTabContainer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvToolbar">
+
+        <com.allsuit.casual.suit.photo.utility.TextViewOutline
+            android:id="@+id/tvSample"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:minHeight="@dimen/_40dp"
+            android:padding="@dimen/_20dp"
+            android:text="Double Tap To Edit"
+            android:textColor="@color/black"
+
+            android:textSize="@dimen/_20sp"
+
+             />
+        <!-- app:innerShadowColor="#73AF15"
+                   app:innerShadowDy="2dp"
+                   app:innerShadowRadius="1dp"
+                   app:outerShadowColor="#FF0088ff"
+                   app:outerShadowDy="3dp"
+                   app:outerShadowRadius="10dp"
+                   app:strokeColor="#FFff0000"
+                   app:strokeJoinStyle="bevel"-->
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frmSubTabContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/frmSubMenuContainer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabTextMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabIndicatorColor="@color/white"
+            app:tabIndicatorHeight="1dp"
+            app:tabSelectedTextColor="@color/Snow"
+            app:tabTextAppearance="?android:attr/textAppearanceSmall"
+            app:tabTextColor="@color/White" />
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabStrokeMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabIndicatorColor="@color/white"
+            app:tabIndicatorHeight="1dp"
+            app:tabSelectedTextColor="@color/Snow"
+            app:tabTextAppearance="?android:attr/textAppearanceSmall"
+            app:tabTextColor="@color/White" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frmSubMenuContainer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/rang_dark"
+
+        app:layout_constraintBottom_toTopOf="@+id/HSVMenu"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        >
+
+        <FrameLayout
+            android:id="@+id/frmTextContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFont"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+                android:visibility="visible" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvColor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+
+
+            <LinearLayout
+                android:id="@+id/lnvTextSize"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbTextSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sp"
+                    android:layout_marginEnd="@dimen/_20sp"
+                    app:isb_indicator_color="@color/White"
+                    app:isb_indicator_text_color="@color/Black"
+                    app:isb_indicator_type="rounded_corners"
+                    app:isb_max="100"
+                    app:isb_min="8"
+                    app:isb_progress="20"
+                    app:isb_progress_value_float="false"
+                    app:isb_seek_bar_type="continuous_texts_ends"
+                    app:isb_show_indicator="true"
+                    app:isb_text_color="@color/White"
+                    app:isb_thumb_color="@color/White"
+                    app:isb_thumb_width="@dimen/_20sp"
+                    app:isb_tick_on_thumb_left_hide="false"
+                    app:isb_track_background_bar_color="@color/White"
+                    app:isb_track_progress_bar_color="@color/Bisque" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frmShadowColorContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvShadowOuter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frmShadowSettingContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:padding="@dimen/_10dp"
+            >
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/CLShadowSettingOuter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tvRadiusOuter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Radius"
+                    android:textColor="@color/White"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbRadiusOuter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:flow_horizontalAlign="start"
+                    app:isb_max="100"
+                    app:isb_min="0"
+                    app:isb_progress="0"
+                    app:isb_progress_value_float="false"
+                    app:isb_seek_bar_type="continuous"
+                    app:isb_show_indicator="false"
+                    app:isb_thumb_color="@color/White"
+                    app:isb_thumb_width="@dimen/_20sp"
+                    app:isb_tick_on_thumb_left_hide="false"
+                    app:isb_track_background_bar_color="@color/White"
+                    app:isb_track_progress_bar_color="@color/Bisque"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvRadiusOuter"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvRadiusXPOSOuter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:text="DX"
+                    android:textColor="@color/White"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvRadiusOuter"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRadiusOuter" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbRadiusXPOSOuter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4dp"
+                    app:flow_horizontalAlign="start"
+                    app:isb_max="50"
+                    app:isb_min="-50"
+                    app:isb_progress="0"
+                    app:isb_progress_value_float="false"
+                    app:isb_seek_bar_type="continuous"
+                    app:isb_show_indicator="false"
+                    app:isb_thumb_color="@color/White"
+                    app:isb_thumb_width="@dimen/_20sp"
+                    app:isb_tick_on_thumb_left_hide="false"
+                    app:isb_track_background_bar_color="@color/White"
+                    app:isb_track_progress_bar_color="@color/Bisque"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvRadiusOuter"
+                    app:layout_constraintTop_toBottomOf="@+id/sbRadiusOuter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:text="DX"
+                    android:textColor="@color/White"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvRadiusOuter"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRadiusXPOSOuter" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbRadiusYPOSOuter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4dp"
+                    app:flow_horizontalAlign="start"
+                    app:isb_max="50"
+                    app:isb_min="-50"
+                    app:isb_progress="0"
+                    app:isb_progress_value_float="false"
+                    app:isb_seek_bar_type="continuous"
+                    app:isb_show_indicator="false"
+                    app:isb_thumb_color="@color/White"
+                    app:isb_thumb_width="@dimen/_20sp"
+                    app:isb_tick_on_thumb_left_hide="false"
+                    app:isb_track_background_bar_color="@color/White"
+                    app:isb_track_progress_bar_color="@color/Bisque"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvRadiusOuter"
+                    app:layout_constraintTop_toBottomOf="@+id/sbRadiusXPOSOuter" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/frmStrokeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStroke"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/lnvStrokeSize"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbStrokeSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sp"
+                    android:layout_marginEnd="@dimen/_20sp"
+                    app:isb_indicator_color="@color/White"
+                    app:isb_indicator_text_color="@color/Black"
+                    app:isb_indicator_type="rounded_corners"
+                    app:isb_max="20"
+                    app:isb_min="0"
+                    app:isb_progress="2"
+                    app:isb_progress_value_float="false"
+                    app:isb_seek_bar_type="continuous_texts_ends"
+                    app:isb_show_indicator="true"
+                    app:isb_text_color="@color/White"
+                    app:isb_thumb_color="@color/White"
+                    app:isb_thumb_width="@dimen/_20sp"
+                    app:isb_tick_on_thumb_left_hide="false"
+                    app:isb_track_background_bar_color="@color/White"
+                    app:isb_track_progress_bar_color="@color/Bisque" />
+            </LinearLayout>
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/HSVMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabMenuLayout"
+            style="@style/TabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/rang"
+
+            app:tabMode="auto">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/icon_font"
+                android:text="Text"
+                />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/icon_color"
+                android:text="Shadow Color" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/icon_shadow"
+                android:text="Shadow Setting" />
+
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/icon_strock"
+                android:text="Stroke" />
+
+        </com.google.android.material.tabs.TabLayout>
+    </HorizontalScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

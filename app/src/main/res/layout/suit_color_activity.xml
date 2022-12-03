@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/rang"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+
+            android:text="Change Suit Color"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/imgDone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_effect"
+            android:src="@drawable/done_icon" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frmLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|center"
+        android:layout_weight="1"
+        android:background="#00000000">
+
+        <ImageView
+            android:id="@+id/imgTemplate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitEnd"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/imgTemplateOwerlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitEnd"
+            android:visibility="invisible"
+
+
+
+            />
+
+        <ImageView
+            android:id="@+id/imgTemporary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitEnd"
+            android:visibility="visible"
+
+
+            />
+
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+    </FrameLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/rang_dark"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RED"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <com.warkiz.widget.IndicatorSeekBar
+                android:id="@+id/barRed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginEnd="@dimen/_10dp"
+                app:flow_horizontalAlign="start"
+                app:isb_max="225"
+                app:isb_min="0"
+                app:isb_progress="112"
+                app:isb_progress_value_float="false"
+                app:isb_seek_bar_type="continuous"
+                app:isb_show_indicator="false"
+                app:isb_thumb_color="@color/Red"
+                app:isb_thumb_width="@dimen/_20sp"
+                app:isb_tick_on_thumb_left_hide="false"
+                app:isb_track_background_bar_color="@color/Red"
+                app:isb_track_progress_bar_color="@color/FloralWhite" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GREEN"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <com.warkiz.widget.IndicatorSeekBar
+                android:id="@+id/barGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginEnd="@dimen/_10dp"
+                app:flow_horizontalAlign="start"
+                app:isb_max="225"
+                app:isb_min="0"
+                app:isb_progress="112"
+                app:isb_progress_value_float="false"
+                app:isb_seek_bar_type="continuous"
+                app:isb_show_indicator="false"
+                app:isb_thumb_color="@color/GreenYellow"
+                app:isb_thumb_width="@dimen/_20sp"
+                app:isb_tick_on_thumb_left_hide="false"
+                app:isb_track_background_bar_color="@color/Aquamarine"
+                app:isb_track_progress_bar_color="@color/FloralWhite" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BLUE"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <com.warkiz.widget.IndicatorSeekBar
+                android:id="@+id/barBlue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginEnd="@dimen/_10dp"
+                app:flow_horizontalAlign="start"
+                app:isb_max="225"
+                app:isb_min="0"
+                app:isb_progress="112"
+                app:isb_progress_value_float="false"
+                app:isb_seek_bar_type="continuous"
+                app:isb_show_indicator="false"
+                app:isb_thumb_color="@color/DeepSkyBlue"
+                app:isb_thumb_width="@dimen/_20sp"
+                app:isb_tick_on_thumb_left_hide="false"
+                app:isb_track_background_bar_color="@color/DeepSkyBlue"
+                app:isb_track_progress_bar_color="@color/FloralWhite" />
+
+
+
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
