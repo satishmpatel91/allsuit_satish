@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.allsuit.casualsuit"
     android:installLocation="auto"
-    android:versionCode="23"
+
     android:versionName="3.2">
 
     <!--<uses-sdk
@@ -48,7 +48,8 @@
             android:name="com.allsuit.casual.suit.photo.SpleshActivity"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
