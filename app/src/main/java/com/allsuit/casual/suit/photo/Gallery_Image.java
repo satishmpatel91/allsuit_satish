@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.allsuit.casualsuit.R;
 import com.allsuit.casual.suit.photo.model.StickerData;
 import com.allsuit.casual.suit.photo.model.StickerImage;
 import com.allsuit.casual.suit.photo.sticker.DrawableSticker;
@@ -32,8 +31,9 @@ import com.allsuit.casual.suit.photo.sticker.Sticker;
 import com.allsuit.casual.suit.photo.sticker.StickerView;
 import com.allsuit.casual.suit.photo.utility.AppUtility;
 import com.allsuit.casual.suit.photo.utility.Constant;
+import com.allsuit.casualsuit.R;
+import com.canhub.cropper.CropImage;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

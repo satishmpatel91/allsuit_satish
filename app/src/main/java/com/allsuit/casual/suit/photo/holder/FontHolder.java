@@ -4,10 +4,10 @@ import android.graphics.Typeface;
 import android.view.View;
 import android.widget.TextView;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.leodroidcoder.genericadapter.BaseViewHolder;
+import com.allsuit.casual.suit.photo.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 import com.allsuit.casual.suit.photo.model.Font;
-import com.leodroidcoder.genericadapter.BaseViewHolder;
-import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
+import com.allsuit.casualsuit.R;
 
 import io.github.inflationx.calligraphy3.TypefaceUtils;
 

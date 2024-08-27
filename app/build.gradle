@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 34
-    namespace 'com.allsuit.casual.suit.photo'
+    namespace 'com.allsuit.casualsuit'
 
     defaultConfig {
         applicationId "com.allsuit.casual.suit.photo"
@@ -50,7 +50,7 @@ dependencies {
 
 
     // Mandatory
-    implementation 'com.vanniktech:android-image-cropper:4.6.0'
+    implementation 'com.github.CanHub:Android-Image-Cropper:2.0.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
 
     implementation 'androidx.cardview:cardview:1.0.0'

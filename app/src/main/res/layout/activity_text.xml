@@ -171,21 +171,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_20sp"
                     android:layout_marginEnd="@dimen/_20sp"
-                    app:isb_indicator_color="@color/White"
-                    app:isb_indicator_text_color="@color/Black"
-                    app:isb_indicator_type="rounded_corners"
+
                     app:isb_max="100"
                     app:isb_min="8"
                     app:isb_progress="20"
                     app:isb_progress_value_float="false"
-                    app:isb_seek_bar_type="continuous_texts_ends"
-                    app:isb_show_indicator="true"
-                    app:isb_text_color="@color/White"
-                    app:isb_thumb_color="@color/White"
-                    app:isb_thumb_width="@dimen/_20sp"
-                    app:isb_tick_on_thumb_left_hide="false"
-                    app:isb_track_background_bar_color="@color/White"
-                    app:isb_track_progress_bar_color="@color/Bisque" />
+                    />
 
             </LinearLayout>
         </FrameLayout>
@@ -245,13 +236,7 @@
                     app:isb_min="0"
                     app:isb_progress="0"
                     app:isb_progress_value_float="false"
-                    app:isb_seek_bar_type="continuous"
-                    app:isb_show_indicator="false"
-                    app:isb_thumb_color="@color/White"
-                    app:isb_thumb_width="@dimen/_20sp"
-                    app:isb_tick_on_thumb_left_hide="false"
-                    app:isb_track_background_bar_color="@color/White"
-                    app:isb_track_progress_bar_color="@color/Bisque"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvRadiusOuter"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -278,13 +263,7 @@
                     app:isb_min="-50"
                     app:isb_progress="0"
                     app:isb_progress_value_float="false"
-                    app:isb_seek_bar_type="continuous"
-                    app:isb_show_indicator="false"
-                    app:isb_thumb_color="@color/White"
-                    app:isb_thumb_width="@dimen/_20sp"
-                    app:isb_tick_on_thumb_left_hide="false"
-                    app:isb_track_background_bar_color="@color/White"
-                    app:isb_track_progress_bar_color="@color/Bisque"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvRadiusOuter"
                     app:layout_constraintTop_toBottomOf="@+id/sbRadiusOuter" />
@@ -310,13 +289,7 @@
                     app:isb_min="-50"
                     app:isb_progress="0"
                     app:isb_progress_value_float="false"
-                    app:isb_seek_bar_type="continuous"
-                    app:isb_show_indicator="false"
-                    app:isb_thumb_color="@color/White"
-                    app:isb_thumb_width="@dimen/_20sp"
-                    app:isb_tick_on_thumb_left_hide="false"
-                    app:isb_track_background_bar_color="@color/White"
-                    app:isb_track_progress_bar_color="@color/Bisque"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvRadiusOuter"
                     app:layout_constraintTop_toBottomOf="@+id/sbRadiusXPOSOuter" />
@@ -356,21 +329,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_20sp"
                     android:layout_marginEnd="@dimen/_20sp"
-                    app:isb_indicator_color="@color/White"
-                    app:isb_indicator_text_color="@color/Black"
-                    app:isb_indicator_type="rounded_corners"
+
                     app:isb_max="20"
                     app:isb_min="0"
                     app:isb_progress="2"
                     app:isb_progress_value_float="false"
-                    app:isb_seek_bar_type="continuous_texts_ends"
-                    app:isb_show_indicator="true"
-                    app:isb_text_color="@color/White"
-                    app:isb_thumb_color="@color/White"
-                    app:isb_thumb_width="@dimen/_20sp"
-                    app:isb_tick_on_thumb_left_hide="false"
-                    app:isb_track_background_bar_color="@color/White"
-                    app:isb_track_progress_bar_color="@color/Bisque" />
+
+                     />
             </LinearLayout>
         </FrameLayout>
 

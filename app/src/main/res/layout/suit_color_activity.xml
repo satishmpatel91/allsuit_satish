@@ -132,13 +132,9 @@
                 app:isb_min="0"
                 app:isb_progress="112"
                 app:isb_progress_value_float="false"
-                app:isb_seek_bar_type="continuous"
-                app:isb_show_indicator="false"
-                app:isb_thumb_color="@color/Red"
-                app:isb_thumb_width="@dimen/_20sp"
-                app:isb_tick_on_thumb_left_hide="false"
-                app:isb_track_background_bar_color="@color/Red"
-                app:isb_track_progress_bar_color="@color/FloralWhite" />
+
+
+                 />
 
         </TableRow>
 
@@ -170,13 +166,7 @@
                 app:isb_min="0"
                 app:isb_progress="112"
                 app:isb_progress_value_float="false"
-                app:isb_seek_bar_type="continuous"
-                app:isb_show_indicator="false"
-                app:isb_thumb_color="@color/GreenYellow"
-                app:isb_thumb_width="@dimen/_20sp"
-                app:isb_tick_on_thumb_left_hide="false"
-                app:isb_track_background_bar_color="@color/Aquamarine"
-                app:isb_track_progress_bar_color="@color/FloralWhite" />
+                 />
 
 
         </TableRow>
@@ -208,13 +198,7 @@
                 app:isb_min="0"
                 app:isb_progress="112"
                 app:isb_progress_value_float="false"
-                app:isb_seek_bar_type="continuous"
-                app:isb_show_indicator="false"
-                app:isb_thumb_color="@color/DeepSkyBlue"
-                app:isb_thumb_width="@dimen/_20sp"
-                app:isb_tick_on_thumb_left_hide="false"
-                app:isb_track_background_bar_color="@color/DeepSkyBlue"
-                app:isb_track_progress_bar_color="@color/FloralWhite" />
+               />
 
 
 

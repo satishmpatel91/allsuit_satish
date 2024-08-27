@@ -21,15 +21,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.allsuit.casualsuit.R;
 import com.allsuit.casual.suit.photo.adapter.ColorAdapter;
 import com.allsuit.casual.suit.photo.adapter.FontAdapter;
+import com.allsuit.casual.suit.photo.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 import com.allsuit.casual.suit.photo.model.FontStyle;
 import com.allsuit.casual.suit.photo.model.StickerData;
 import com.allsuit.casual.suit.photo.utility.DoubleClickListener;
 import com.allsuit.casual.suit.photo.utility.TextViewOutline;
+import com.allsuit.casualsuit.R;
 import com.google.android.material.tabs.TabLayout;
-import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 import com.warkiz.widget.IndicatorSeekBar;
 
 import org.greenrobot.eventbus.EventBus;

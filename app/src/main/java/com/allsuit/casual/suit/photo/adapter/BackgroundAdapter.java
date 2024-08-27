@@ -14,9 +14,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-
-import com.allsuit.casualsuit.R;
 import com.allsuit.casual.suit.photo.utility.AppUtility;
+import com.allsuit.casualsuit.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 

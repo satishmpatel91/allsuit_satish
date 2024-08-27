@@ -26,15 +26,15 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
+import androidx.multidex.BuildConfig;
 
-import com.allsuit.casualsuit.BuildConfig;
-import com.allsuit.casualsuit.R;
 import com.allsuit.casual.suit.photo.adapter.TradingAppAdapter;
 import com.allsuit.casual.suit.photo.utility.AppUtility;
 import com.allsuit.casual.suit.photo.utility.Constant;
 import com.allsuit.casual.suit.photo.utility.DisplayMetricsHandler;
 import com.allsuit.casual.suit.photo.utility.JSONParser;
-import com.theartofdev.edmodo.cropper.CropImage;
+import com.allsuit.casualsuit.R;
+import com.canhub.cropper.CropImage;
 
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
