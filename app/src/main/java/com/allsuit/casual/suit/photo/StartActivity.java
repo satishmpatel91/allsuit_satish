@@ -4,13 +4,16 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -42,6 +45,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -244,7 +248,6 @@ public class StartActivity extends Activity {
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
-                return;
             } else {
                 final CharSequence[] items = {"Select From Gallery", "Choose From Saved Face",
                         "Cancel"};
@@ -281,7 +284,7 @@ public class StartActivity extends Activity {
     public void capturePhoto() {
         try {
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+
                 // Create the File where the photo should go
                 File photoFile = null;
 
@@ -295,7 +298,7 @@ public class StartActivity extends Activity {
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturePhotoUri);
                     startActivityForResult(takePictureIntent, CAMERA_REQUEST);
                 }
-            }
+
         } catch (Exception ex) {
             ex.printStackTrace();
             // Error occurred while creating the File
@@ -348,9 +351,7 @@ public class StartActivity extends Activity {
         return isAvailable;
     }
 
-    public void crashMe() {
-        throw new NullPointerException();
-    }
+
 
     public class loaddata extends AsyncTask<Void, Void, Void> {
 
@@ -472,8 +473,10 @@ public class StartActivity extends Activity {
 
             Intent intent = new Intent(StartActivity.this, TemplateActivity.class);
 
+            System.out.println(resultUri.getPath());
 
-            bitmap = BitmapFactory.decodeFile(resultUri.getPath(), options);
+          //  bitmap = BitmapFactory.decodeFile(resultUri.getPath(), options);
+                    bitmap=getBitmap(StartActivity.this,resultUri);
             int m = DisplayMetricsHandler.getScreenHeight();
             int n = (DisplayMetricsHandler.getScreenWidth() * bitmap.getHeight()) / bitmap.getWidth();
             if (n <= m) {
@@ -519,7 +522,21 @@ public class StartActivity extends Activity {
             }
         }
     }
+    public static Bitmap getBitmap(Context context, Uri imageURI) {
+        try {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+                return ImageDecoder.decodeBitmap(ImageDecoder.createSource(context.getContentResolver(), imageURI));
+            } else {
+                InputStream
+                        inputStream = context.getContentResolver().openInputStream(imageURI);
+                return BitmapFactory.decodeStream(inputStream);
 
+            }
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());

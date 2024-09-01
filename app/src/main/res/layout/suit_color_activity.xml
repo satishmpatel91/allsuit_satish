@@ -61,8 +61,7 @@
             android:layout_gravity="bottom|center"
             android:adjustViewBounds="true"
             android:scaleType="fitEnd"
-            android:visibility="invisible"
-            />
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/imgTemplateOwerlay"
@@ -72,7 +71,6 @@
             android:adjustViewBounds="true"
             android:scaleType="fitEnd"
             android:visibility="invisible"
-
 
 
             />
@@ -93,8 +91,7 @@
             android:id="@+id/progress_circular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            />
+            android:layout_gravity="center" />
     </FrameLayout>
 
     <TableLayout
@@ -120,21 +117,20 @@
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold" />
 
-            <com.warkiz.widget.IndicatorSeekBar
+            <SeekBar
                 android:id="@+id/barRed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10dp"
                 android:layout_marginEnd="@dimen/_10dp"
-                app:flow_horizontalAlign="start"
-                app:isb_max="225"
-                app:isb_min="0"
-                app:isb_progress="112"
-                app:isb_progress_value_float="false"
-
-
-                 />
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="225"
+                android:progress="112"
+                android:maxHeight="3dp"
+                android:minHeight="3dp"
+                android:progressDrawable="@drawable/seekbar"
+                android:thumbTint="@color/DeepPink"
+                />
 
         </TableRow>
 
@@ -154,19 +150,21 @@
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold" />
 
-            <com.warkiz.widget.IndicatorSeekBar
+            <SeekBar
                 android:id="@+id/barGreen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10dp"
                 android:layout_marginEnd="@dimen/_10dp"
-                app:flow_horizontalAlign="start"
-                app:isb_max="225"
-                app:isb_min="0"
-                app:isb_progress="112"
-                app:isb_progress_value_float="false"
-                 />
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="225"
+                android:progress="112"
+                android:maxHeight="3dp"
+                android:minHeight="3dp"
+                android:progressDrawable="@drawable/seekbar"
+                android:thumbTint="@color/DeepPink"
+                />
+
 
 
         </TableRow>
@@ -186,22 +184,20 @@
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold" />
 
-            <com.warkiz.widget.IndicatorSeekBar
+            <SeekBar
                 android:id="@+id/barBlue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10dp"
                 android:layout_marginEnd="@dimen/_10dp"
-                app:flow_horizontalAlign="start"
-                app:isb_max="225"
-                app:isb_min="0"
-                app:isb_progress="112"
-                app:isb_progress_value_float="false"
-               />
-
-
-
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="225"
+                android:progress="112"
+                android:maxHeight="3dp"
+                android:minHeight="3dp"
+                android:progressDrawable="@drawable/seekbar"
+                android:thumbTint="@color/DeepPink"
+                />
         </TableRow>
     </TableLayout>
 </LinearLayout>

@@ -25,13 +25,13 @@ public class SuitColorActivity extends Activity {
     private ImageView imgDone;
     private ImageView imgTemplate;
     private ImageView imgTemplateOwerlay;
-    private IndicatorSeekBar barRed;
-    private IndicatorSeekBar barGreen;
-    private IndicatorSeekBar barBlue;
+    private SeekBar barRed;
+    private SeekBar barGreen;
+    private SeekBar barBlue;
 
     private ProgressBar progress_circular;
 
-    SeekBar seekBar;
+
 
     private FrameLayout frmLayout;
     String templateUrl = "";
@@ -56,9 +56,55 @@ public class SuitColorActivity extends Activity {
 
     private void initClickEvents() {
 
-        barRed.setOnSeekChangeListener(onColorSeekBarChangeListener);
-        barGreen.setOnSeekChangeListener(onColorSeekBarChangeListener);
-        barBlue.setOnSeekChangeListener(onColorSeekBarChangeListener);
+        barRed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                setColorFilter();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        barGreen.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                setColorFilter();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        barBlue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                setColorFilter();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,28 +188,6 @@ public class SuitColorActivity extends Activity {
 
     }
 
-
-    IndicatorSeekBar.OnSeekBarChangeListener onColorSeekBarChangeListener = new IndicatorSeekBar.OnSeekBarChangeListener() {
-        @Override
-        public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
-            setColorFilter();
-        }
-
-        @Override
-        public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String tickBelowText, boolean fromUserTouch) {
-
-        }
-
-        @Override
-        public void onStartTrackingTouch(IndicatorSeekBar seekBar, int thumbPosOnTick) {
-
-        }
-
-        @Override
-        public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
-
-        }
-    };
 
     public void setColorFilter() {
         Log.e("TEST", "COLOR");

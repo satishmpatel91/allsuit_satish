@@ -10,22 +10,19 @@ import androidx.fragment.app.Fragment;
 
 import com.allsuit.casualsuit.R;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 
 public class EditImageFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     private EditImageFragmentListener listener;
 
-    @BindView(R.id.seekbar_brightness)
-    SeekBar seekBarBrightness;
 
-    @BindView(R.id.seekbar_contrast)
-    SeekBar seekBarContrast;
+    private SeekBar seekBarBrightness;
 
-    @BindView(R.id.seekbar_saturation)
-    SeekBar seekBarSaturation;
+
+    private SeekBar seekBarContrast;
+
+
+    private SeekBar seekBarSaturation;
 
     public void setListener(EditImageFragmentListener listener) {
         this.listener = listener;
@@ -44,8 +41,10 @@ public class EditImageFragment extends Fragment implements SeekBar.OnSeekBarChan
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit_image, container, false);
-
-        ButterKnife.bind(this, view);
+        seekBarBrightness = view.findViewById(R.id.seekbar_brightness);
+        seekBarContrast = view.findViewById(R.id.seekbar_contrast);
+        seekBarSaturation = view.findViewById(R.id.seekbar_saturation);
+        //ButterKnife.bind(this, view);
 
         // keeping brightness value b/w -100 / +100
         seekBarBrightness.setMax(200);

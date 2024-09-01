@@ -36,7 +36,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class TextActivity extends AppCompatActivity implements IndicatorSeekBar.OnSeekBarChangeListener {
+public class TextActivity extends AppCompatActivity  {
 
 
     RecyclerView rvFont;
@@ -129,18 +129,43 @@ public class TextActivity extends AppCompatActivity implements IndicatorSeekBar.
         imgBack = findViewById(R.id.imgBack);
         imgDone = findViewById(R.id.imgDone);
 
-        sbRadiusOuter.setOnSeekChangeListener(this);
-        sbRadiusXPOSOuter.setOnSeekChangeListener(this);
-        sbRadiusYPOSOuter.setOnSeekChangeListener(this);
+        sbRadiusOuter.addOnProgressChangeListener(progress -> {
+            fontStyle.setShadowRadiusOuter((int) progress);
+            tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
+            tvSample.invalidate();
+        });
+        sbRadiusXPOSOuter.addOnProgressChangeListener(progress -> {
+            fontStyle.setShadowDXOuter((int) progress);
+            tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
+            tvSample.invalidate();
+        });
+        sbRadiusYPOSOuter.addOnProgressChangeListener(progress -> {
+            fontStyle.setShadowDYOuter((int) progress);
+            tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
+            tvSample.invalidate();
+        });
+        sbStrokeSize.addOnProgressChangeListener(progress -> {
+            if (fontStyle.getStrokeColor().getValue() != 0) {
+                fontStyle.setStrokeSize((int)progress);
+                tvSample.setOutlineColor( fontStyle.getStrokeColor().getValue());
+                tvSample.setOutlineSize(fontStyle.getStrokeSize());
+                tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
+                tvSample.invalidate();
+            } else {
+                fontStyle.setStrokeSize((int)progress);
+                //     tvSample.setStroke(progress, Color.BLACK);
+                tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
+                tvSample.invalidate();
+            }
+        });
 
-        /*sbRadiusInner.setOnSeekChangeListener(this);
-        sbRadiusXPOSInner.setOnSeekChangeListener(this);
-        sbRadiusYPOSInner.setOnSeekChangeListener(this);*/
 
-        sbStrokeSize.setOnSeekChangeListener(this);
-
-
-        sbTextSize.setOnSeekChangeListener(this);
+        sbTextSize.addOnProgressChangeListener(progress -> {
+            tvSample.setTextSize(TypedValue.COMPLEX_UNIT_SP, progress);
+            fontStyle.setTextSize((int) progress);
+            tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
+            tvSample.invalidate();
+        });
 
         rvFont = findViewById(R.id.rvFont);
         fontAdapter = new FontAdapter(this, fontOnRecyclerItemClickListener);
@@ -555,71 +580,7 @@ public class TextActivity extends AppCompatActivity implements IndicatorSeekBar.
     }
 
 
-    @Override
-    public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
 
-        if (seekBar.getId() == sbStrokeSize.getId()) {
-            if (fontStyle.getStrokeColor().getValue() != 0) {
-                fontStyle.setStrokeSize(progress);
-                tvSample.setOutlineColor( fontStyle.getStrokeColor().getValue());
-                tvSample.setOutlineSize(fontStyle.getStrokeSize());
-                tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
-                tvSample.invalidate();
-            } else {
-                fontStyle.setStrokeSize(progress);
-           //     tvSample.setStroke(progress, Color.BLACK);
-                tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
-                tvSample.invalidate();
-            }
-
-        } else if (seekBar.getId() == sbRadiusOuter.getId()) {
-            fontStyle.setShadowRadiusOuter(progress);
-            tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
-           /* tvSample.setOutlineColor( fontStyle.getStrokeColor().getValue());
-            tvSample.setOutlineSize(fontStyle.getStrokeSize());*/
-            tvSample.invalidate();
-        } else if (seekBar.getId() == sbRadiusXPOSOuter.getId()) {
-            fontStyle.setShadowDXOuter(progress);
-            tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
-           /* tvSample.setOutlineColor( fontStyle.getStrokeColor().getValue());
-            tvSample.setOutlineSize(fontStyle.getStrokeSize());*/
-            tvSample.invalidate();
-        } else if (seekBar.getId() == sbRadiusYPOSOuter.getId()) {
-            fontStyle.setShadowDYOuter(progress);
-           /* tvSample.setOutlineColor( fontStyle.getStrokeColor().getValue());
-            tvSample.setOutlineSize(fontStyle.getStrokeSize());*/
-            tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
-            tvSample.invalidate();
-        }
-
-       /*else if (seekBar.getId() == sbOpacity.getId()) {
-
-            float opacity = (float) progress / 255f;
-            Log.e("Opacity", opacity + "");
-            tvSample.setAlpha(opacity);
-            fontStyle.setOpacity(opacity);
-        }*/ else if (seekBar.getId() == sbTextSize.getId()) {
-            tvSample.setTextSize(TypedValue.COMPLEX_UNIT_SP, progress);
-            fontStyle.setTextSize(progress);
-            tvSample.setShadowLayer(fontStyle.getShadowRadiusOuter(), fontStyle.getShadowDXOuter(), fontStyle.getShadowDYOuter(), fontStyle.getShadowOuterColor().getValue());
-            tvSample.invalidate();
-        }
-    }
-
-    @Override
-    public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String tickBelowText, boolean fromUserTouch) {
-
-    }
-
-    @Override
-    public void onStartTrackingTouch(IndicatorSeekBar seekBar, int thumbPosOnTick) {
-
-    }
-
-    @Override
-    public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
-
-    }
 
 
     @Subscribe

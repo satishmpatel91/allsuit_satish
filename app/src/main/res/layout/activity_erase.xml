@@ -58,32 +58,21 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/white" />
 
-              <!--  <androidx.appcompat.widget.AppCompatSeekBar
+                <SeekBar
                     android:id="@+id/sbEraseSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_weight="1.0"
-                    android:max="200"
-                    android:layout_marginLeft="5dp"
-                    android:progress="30"
-
-                    android:progressDrawable="@drawable/progress_horizontal_holo_light"
-                    android:thumb="@drawable/control_selector_holo_light"/>-->
-
-                <com.warkiz.widget.IndicatorSeekBar
-                    android:id="@+id/sbEraseSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    app:flow_horizontalAlign="start"
                     android:layout_marginStart="@dimen/_4dp"
                     android:layout_marginEnd="@dimen/_4dp"
-                    app:isb_max="200"
-                    app:isb_min="1"
-                    app:isb_progress="30"
-
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="200"
+                    android:progress="25"
+                    android:maxHeight="3dp"
+                    android:minHeight="3dp"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:thumbTint="@color/DeepPink"
                     />
+
 
                 <TextView
                     android:id="@+id/txtEraseSizeMessage"
@@ -190,30 +179,19 @@
                 android:textColor="@color/white" />
 
 
-
-         <!--   <androidx.appcompat.widget.AppCompatSeekBar
+            <SeekBar
                 android:id="@+id/sb_AutoErasePortion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_weight="1.0"
-                android:max="200"
-                android:progress="50"
-                android:progressDrawable="@drawable/progress_horizontal_holo_light"
-                android:thumb="@drawable/control_selector_holo_light" />-->
-
-
-            <com.warkiz.widget.IndicatorSeekBar
-                android:id="@+id/sb_AutoErasePortion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                app:flow_horizontalAlign="start"
-                app:isb_max="200"
-                app:isb_min="0"
-                app:isb_progress="50"
-
+                android:max="200"
+                android:progress="25"
+                android:maxHeight="3dp"
+                android:minHeight="3dp"
+                android:progressDrawable="@drawable/seekbar"
+                android:thumbTint="@color/DeepPink"
                 />
+
             <TextView
 
                 android:layout_width="match_parent"
@@ -253,17 +231,16 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/white" />
 
-                <com.warkiz.widget.IndicatorSeekBar
+                <SeekBar
                     android:id="@+id/sb_Offset"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-
-                    app:flow_horizontalAlign="start"
-                    app:isb_max="400"
-                    app:isb_min="1"
-                    app:isb_progress="50"
-                    app:isb_progress_value_float="false"
+                    android:max="400"
+                    android:progress="50"
+                    android:maxHeight="3dp"
+                    android:minHeight="3dp"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:thumbTint="@color/DeepPink"
                     />
 
 

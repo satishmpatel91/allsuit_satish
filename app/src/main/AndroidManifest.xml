@@ -63,6 +63,13 @@
 
         </activity>
         <activity
+            android:name="com.allsuit.casual.suit.photo.DemoActivity"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
             android:name="com.allsuit.casual.suit.photo.Gallery_Image"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />

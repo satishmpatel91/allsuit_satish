@@ -5,13 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener;
-import com.google.android.material.tabs.TabLayout.Tab;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -22,12 +15,16 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.allsuit.casualsuit.R;
 import com.allsuit.casual.suit.photo.utility.Constant;
 import com.allsuit.casual.suit.photo.utility.DisplayMetricsHandler;
 import com.allsuit.casual.suit.photo.utility.SharedPrefs;
 import com.allsuit.casual.suit.photo.widget.HoverView;
+import com.allsuit.casualsuit.R;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener;
+import com.google.android.material.tabs.TabLayout.Tab;
 import com.warkiz.widget.IndicatorSeekBar;
 
 /**
@@ -74,8 +71,8 @@ public class EraseActivity extends AppCompatActivity {
     ApplicationManager applicationManager;
 
 
-    int saveFinalHeight=0;
-    int saveFinalWidth=0;
+    int saveFinalHeight = 0;
+    int saveFinalWidth = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +83,8 @@ public class EraseActivity extends AppCompatActivity {
         applicationManager.doDisplayIntrestial();
         if (applicationManager.getBitmap() != null) {
             bitmap = applicationManager.getBitmap();
-            saveFinalHeight=bitmap.getHeight();
-            saveFinalWidth=bitmap.getWidth();
+            saveFinalHeight = bitmap.getHeight();
+            saveFinalWidth = bitmap.getWidth();
             Log.e("Tag", "H " + bitmap.getHeight() + " W" + bitmap.getWidth() + " " + bitmap.getDensity());
         }
         initUI();
@@ -232,93 +229,40 @@ public class EraseActivity extends AppCompatActivity {
                 public void onTabReselected(Tab tab) {
                 }
             });
-
-            sbOffset.setOnSeekChangeListener(new IndicatorSeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
-                    if (mHoverView.getMode() == 0 || HoverView.UNERASE_MODE == mHoverView.getMode()) {
-                        mHoverView.setCircleSpace(progress);
-                        SharedPrefs.save(EraseActivity.this, SharedPrefs.ERASER_SIZE, progress);
-                        Log.e("OFFSET", progress + "");
-                    }
-                }
-
-                @Override
-                public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String tickBelowText, boolean fromUserTouch) {
-
-                }
-
-                @Override
-                public void onStartTrackingTouch(IndicatorSeekBar seekBar, int thumbPosOnTick) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
-
-                }
-            });
-            sbEraseSize.setOnSeekChangeListener(new IndicatorSeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
-                    txtEraseSizeCount.setText(String.format("%02d", new Object[]{Integer.valueOf(progress / 2)}));
-                    mHoverView.setEraseOffset(progress);
-                }
-
-                @Override
-                public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String tickBelowText, boolean fromUserTouch) {
-
-                }
-
-                @Override
-                public void onStartTrackingTouch(IndicatorSeekBar seekBar, int thumbPosOnTick) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
-
+            sbOffset.addOnProgressChangeListener(progress -> {
+                if (mHoverView.getMode() == 0 || HoverView.UNERASE_MODE == mHoverView.getMode()) {
+                    mHoverView.setCircleSpace((int) progress);
+                    SharedPrefs.save(EraseActivity.this, SharedPrefs.ERASER_SIZE, progress);
+                    Log.e("OFFSET", progress + "");
                 }
             });
 
-            sbAutoErasePortion.setOnSeekChangeListener(new IndicatorSeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
-                    try {
+            sbEraseSize.addOnProgressChangeListener(progress -> {
+                txtEraseSizeCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) (progress / 2))}));
+                mHoverView.setEraseOffset((int) progress);
+            });
 
 
-                        txtAutoEraseCount.setText(String.format("%02d", new Object[]{Integer.valueOf(seekBar.getProgress())}));
-                        mHoverView.setMagicThreshold(seekBar.getProgress());
-                        int mode = mHoverView.getMode();
-                        HoverView hoverView = mHoverView;
-                        if (mode == HoverView.MAGIC_MODE) {
-                            mHoverView.magicEraseBitmap();
-                        } else {
-                            mode = mHoverView.getMode();
-                            hoverView = mHoverView;
-                            if (mode == HoverView.MAGIC_MODE_RESTORE) {
-                                mHoverView.magicRestoreBitmap();
-                            }
+            sbAutoErasePortion.addOnProgressChangeListener(progress -> {
+                try {
+
+
+                    txtAutoEraseCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) progress)}));
+                    mHoverView.setMagicThreshold((int) progress);
+                    int mode = mHoverView.getMode();
+                    HoverView hoverView = mHoverView;
+                    if (mode == HoverView.MAGIC_MODE) {
+                        mHoverView.magicEraseBitmap();
+                    } else {
+                        mode = mHoverView.getMode();
+                        hoverView = mHoverView;
+                        if (mode == HoverView.MAGIC_MODE_RESTORE) {
+                            mHoverView.magicRestoreBitmap();
                         }
-                        mHoverView.invalidateView();
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
-                }
-
-                @Override
-                public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String tickBelowText, boolean fromUserTouch) {
-
-                }
-
-                @Override
-                public void onStartTrackingTouch(IndicatorSeekBar seekBar, int thumbPosOnTick) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
-
+                    mHoverView.invalidateView();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             });
 
@@ -371,8 +315,8 @@ public class EraseActivity extends AppCompatActivity {
                 try {
                     Bitmap bitmapTemp = mHoverView.save();
                     applicationManager.setFaceBitmap(bitmapTemp);
-                  // Bitmap tempBitmap=Bitmap.createScaledBitmap(bitmapTemp,saveFinalWidth,saveFinalHeight,false);
-                  //  applicationManager.setBitmap(tempBitmap);
+                    // Bitmap tempBitmap=Bitmap.createScaledBitmap(bitmapTemp,saveFinalWidth,saveFinalHeight,false);
+                    //  applicationManager.setBitmap(tempBitmap);
                     applicationManager.setBitmap(bitmapTemp);
 
                     Intent intent = getIntent();

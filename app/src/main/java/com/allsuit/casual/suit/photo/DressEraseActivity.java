@@ -21,12 +21,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.allsuit.casualsuit.R;
 import com.allsuit.casual.suit.photo.utility.Constant;
 import com.allsuit.casual.suit.photo.utility.DisplayMetricsHandler;
 import com.allsuit.casual.suit.photo.utility.SharedPrefs;
 import com.allsuit.casual.suit.photo.widget.HoverView;
 import com.allsuit.casual.suit.photo.widget.HoverViewDress;
+import com.allsuit.casualsuit.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener;
 import com.google.android.material.tabs.TabLayout.Tab;
@@ -53,7 +53,7 @@ public class DressEraseActivity extends AppCompatActivity {
     private IndicatorSeekBar sbAutoErasePortion;
     private LinearLayout lnvErase;
     private TextView txtEraseSizeCount;
-    private IndicatorSeekBar sbEraseSize;
+    private SeekBar sbEraseSize;
     private ImageView txtUndo;
     private ImageView txtRedo;
     private TabLayout simpleTabLayout;
@@ -218,92 +218,53 @@ public class DressEraseActivity extends AppCompatActivity {
                 }
             });
 
+            sbOffset.addOnProgressChangeListener(progress -> {
+                txtOffsetCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) (progress / 4))}));
+                //   Log.e("OFFSET MODE",mHoverView.getMode()+"");
+                if (mHoverView.getMode() == 0 || HoverView.UNERASE_MODE == mHoverView.getMode()) {
+                    mHoverView.setCircleSpace((int) progress);
+                    SharedPrefs.save(DressEraseActivity.this, SharedPrefs.ERASER_SIZE, progress);
+                    Log.e("OFFSET",progress+"");
+                }
+            });
 
-            sbOffset.setOnSeekChangeListener(new IndicatorSeekBar.OnSeekBarChangeListener() {
+            sbEraseSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
-                public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
-                    txtOffsetCount.setText(String.format("%02d", new Object[]{Integer.valueOf(progress / 4)}));
-                    //   Log.e("OFFSET MODE",mHoverView.getMode()+"");
-                    if (mHoverView.getMode() == 0 || HoverView.UNERASE_MODE == mHoverView.getMode()) {
-                        mHoverView.setCircleSpace(progress);
-                        SharedPrefs.save(DressEraseActivity.this, SharedPrefs.ERASER_SIZE, progress);
-                        Log.e("OFFSET",progress+"");
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    txtEraseSizeCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) (progress / 2))}));
+                    mHoverView.setEraseOffset( progress);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+
+
+            sbAutoErasePortion.addOnProgressChangeListener( progress -> {
+                txtAutoEraseCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) progress)}));
+                mHoverView.setMagicThreshold((int) progress);
+                int mode = mHoverView.getMode();
+                HoverViewDress hoverView = mHoverView;
+                if (mode == HoverView.MAGIC_MODE) {
+                    mHoverView.magicEraseBitmap();
+                } else {
+                    mode = mHoverView.getMode();
+                    hoverView = mHoverView;
+                    if (mode == HoverView.MAGIC_MODE_RESTORE) {
+                        mHoverView.magicRestoreBitmap();
                     }
                 }
-
-                @Override
-                public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String tickBelowText, boolean fromUserTouch) {
-
-                }
-
-                @Override
-                public void onStartTrackingTouch(IndicatorSeekBar seekBar, int thumbPosOnTick) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
-
-                }
+                mHoverView.invalidateView();
             });
 
-            sbEraseSize.setOnSeekChangeListener(new IndicatorSeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
-                    txtEraseSizeCount.setText(String.format("%02d", new Object[]{Integer.valueOf(progress / 2)}));
-                    mHoverView.setEraseOffset(progress);
-                }
 
-                @Override
-                public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String tickBelowText, boolean fromUserTouch) {
-
-                }
-
-                @Override
-                public void onStartTrackingTouch(IndicatorSeekBar seekBar, int thumbPosOnTick) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
-
-                }
-            });
-
-          sbAutoErasePortion.setOnSeekChangeListener(new IndicatorSeekBar.OnSeekBarChangeListener() {
-              @Override
-              public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
-                  txtAutoEraseCount.setText(String.format("%02d", new Object[]{Integer.valueOf(seekBar.getProgress())}));
-                  mHoverView.setMagicThreshold(seekBar.getProgress());
-                  int mode = mHoverView.getMode();
-                  HoverViewDress hoverView = mHoverView;
-                  if (mode == HoverView.MAGIC_MODE) {
-                      mHoverView.magicEraseBitmap();
-                  } else {
-                      mode = mHoverView.getMode();
-                      hoverView = mHoverView;
-                      if (mode == HoverView.MAGIC_MODE_RESTORE) {
-                          mHoverView.magicRestoreBitmap();
-                      }
-                  }
-                  mHoverView.invalidateView();
-              }
-
-              @Override
-              public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String tickBelowText, boolean fromUserTouch) {
-
-              }
-
-              @Override
-              public void onStartTrackingTouch(IndicatorSeekBar seekBar, int thumbPosOnTick) {
-
-              }
-
-              @Override
-              public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
-
-              }
-          });
             resetCircleSize();
             sbEraseSize.setProgress(50);
             this.mHoverView.setEraseOffset(this.sbEraseSize.getProgress());

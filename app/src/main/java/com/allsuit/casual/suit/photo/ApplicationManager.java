@@ -80,7 +80,6 @@ public class ApplicationManager extends Application implements Application.Activ
                 .addInterceptor(new CalligraphyInterceptor(
                         new CalligraphyConfig.Builder()
                                 .setDefaultFontPath("fonts/1.ttf")
-                                .setFontAttrId(R.attr.fontPath)
                                 .build()))
                 .build());
 
