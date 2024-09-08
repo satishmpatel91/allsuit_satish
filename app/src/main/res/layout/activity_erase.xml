@@ -181,11 +181,10 @@
 
             <SeekBar
                 android:id="@+id/sb_AutoErasePortion"
-                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="200"
-                android:progress="25"
+                android:progress="0"
                 android:maxHeight="3dp"
                 android:minHeight="3dp"
                 android:progressDrawable="@drawable/seekbar"
@@ -244,6 +243,8 @@
                     />
 
 
+
+
                 <TextView
 
                     android:layout_width="match_parent"
@@ -283,6 +284,7 @@
         android:id="@+id/simpleTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/rang"
         app:tabBackground="@drawable/tab_selector"
         app:tabIndicatorColor="@color/rang_dark"
         app:tabIndicatorHeight="5dp"

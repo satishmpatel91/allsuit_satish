@@ -164,19 +164,21 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-
-                <com.warkiz.widget.IndicatorSeekBar
+                <SeekBar
                     android:id="@+id/sbTextSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_20sp"
                     android:layout_marginEnd="@dimen/_20sp"
-
-                    app:isb_max="100"
-                    app:isb_min="8"
-                    app:isb_progress="20"
-                    app:isb_progress_value_float="false"
+                    android:max="100"
+                    android:min="8"
+                    android:progress="20"
+                    android:maxHeight="3dp"
+                    android:minHeight="3dp"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:thumbTint="@color/DeepPink"
                     />
+
 
             </LinearLayout>
         </FrameLayout>
@@ -227,19 +229,23 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.warkiz.widget.IndicatorSeekBar
+                <SeekBar
                     android:id="@+id/sbRadiusOuter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:flow_horizontalAlign="start"
-                    app:isb_max="100"
-                    app:isb_min="0"
-                    app:isb_progress="0"
-                    app:isb_progress_value_float="false"
-
+                    android:max="100"
+                    android:progress="0"
+                    android:maxHeight="3dp"
+                    android:minHeight="3dp"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:thumbTint="@color/DeepPink"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvRadiusOuter"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+
 
                 <TextView
                     android:id="@+id/tvRadiusXPOSOuter"
@@ -253,20 +259,25 @@
                     app:layout_constraintStart_toStartOf="@+id/tvRadiusOuter"
                     app:layout_constraintTop_toBottomOf="@+id/tvRadiusOuter" />
 
-                <com.warkiz.widget.IndicatorSeekBar
+
+                <SeekBar
                     android:id="@+id/sbRadiusXPOSOuter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4dp"
                     app:flow_horizontalAlign="start"
-                    app:isb_max="50"
-                    app:isb_min="-50"
-                    app:isb_progress="0"
-                    app:isb_progress_value_float="false"
-
+                    android:max="50"
+                    android:min="-50"
+                    android:progress="0"
+                    android:maxHeight="3dp"
+                    android:minHeight="3dp"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:thumbTint="@color/DeepPink"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvRadiusOuter"
-                    app:layout_constraintTop_toBottomOf="@+id/sbRadiusOuter" />
+                    app:layout_constraintTop_toBottomOf="@+id/sbRadiusOuter"
+                    />
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -279,20 +290,25 @@
                     app:layout_constraintStart_toStartOf="@+id/tvRadiusOuter"
                     app:layout_constraintTop_toBottomOf="@+id/tvRadiusXPOSOuter" />
 
-                <com.warkiz.widget.IndicatorSeekBar
+
+
+                <SeekBar
                     android:id="@+id/sbRadiusYPOSOuter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4dp"
                     app:flow_horizontalAlign="start"
-                    app:isb_max="50"
-                    app:isb_min="-50"
-                    app:isb_progress="0"
-                    app:isb_progress_value_float="false"
-
+                    android:max="50"
+                    android:min="-50"
+                    android:progress="0"
+                    android:maxHeight="3dp"
+                    android:minHeight="3dp"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:thumbTint="@color/DeepPink"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvRadiusOuter"
-                    app:layout_constraintTop_toBottomOf="@+id/sbRadiusXPOSOuter" />
+                    app:layout_constraintTop_toBottomOf="@+id/sbRadiusXPOSOuter"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -323,19 +339,20 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <com.warkiz.widget.IndicatorSeekBar
+                <SeekBar
                     android:id="@+id/sbStrokeSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_20sp"
                     android:layout_marginEnd="@dimen/_20sp"
+                    android:max="20"
+                    android:progress="2"
+                    android:maxHeight="3dp"
+                    android:minHeight="3dp"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:thumbTint="@color/DeepPink"
+                    />
 
-                    app:isb_max="20"
-                    app:isb_min="0"
-                    app:isb_progress="2"
-                    app:isb_progress_value_float="false"
-
-                     />
             </LinearLayout>
         </FrameLayout>
 

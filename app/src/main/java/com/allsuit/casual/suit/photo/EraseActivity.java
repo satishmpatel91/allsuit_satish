@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class EraseActivity extends AppCompatActivity {
     private TextView txtTitleText;
     private LinearLayout lnvEraseHeader;
     private TextView txtOffsetCount;
-    private IndicatorSeekBar sbOffset;
+    private SeekBar sbOffset;
     private ImageView imgBack;
     private ImageView imgDone;
     private RelativeLayout mainLayout;
@@ -45,10 +46,10 @@ public class EraseActivity extends AppCompatActivity {
 
     private LinearLayout lnvAutoErase;
     private TextView txtAutoEraseCount;
-    private IndicatorSeekBar sbAutoErasePortion;
+    private SeekBar sbAutoErasePortion;
     private LinearLayout lnvErase;
     private TextView txtEraseSizeCount;
-    private IndicatorSeekBar sbEraseSize;
+    private SeekBar sbEraseSize;
     private ImageView txtUndo;
     private ImageView txtRedo;
     private TabLayout simpleTabLayout;
@@ -229,42 +230,82 @@ public class EraseActivity extends AppCompatActivity {
                 public void onTabReselected(Tab tab) {
                 }
             });
-            sbOffset.addOnProgressChangeListener(progress -> {
-                if (mHoverView.getMode() == 0 || HoverView.UNERASE_MODE == mHoverView.getMode()) {
-                    mHoverView.setCircleSpace((int) progress);
-                    SharedPrefs.save(EraseActivity.this, SharedPrefs.ERASER_SIZE, progress);
-                    Log.e("OFFSET", progress + "");
-                }
-            });
-
-            sbEraseSize.addOnProgressChangeListener(progress -> {
-                txtEraseSizeCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) (progress / 2))}));
-                mHoverView.setEraseOffset((int) progress);
-            });
-
-
-            sbAutoErasePortion.addOnProgressChangeListener(progress -> {
-                try {
-
-
-                    txtAutoEraseCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) progress)}));
-                    mHoverView.setMagicThreshold((int) progress);
-                    int mode = mHoverView.getMode();
-                    HoverView hoverView = mHoverView;
-                    if (mode == HoverView.MAGIC_MODE) {
-                        mHoverView.magicEraseBitmap();
-                    } else {
-                        mode = mHoverView.getMode();
-                        hoverView = mHoverView;
-                        if (mode == HoverView.MAGIC_MODE_RESTORE) {
-                            mHoverView.magicRestoreBitmap();
-                        }
+            sbOffset.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    if (mHoverView.getMode() == 0 || HoverView.UNERASE_MODE == mHoverView.getMode()) {
+                        mHoverView.setCircleSpace( progress);
+                        SharedPrefs.save(EraseActivity.this, SharedPrefs.ERASER_SIZE, progress);
+                        Log.e("OFFSET", progress + "");
                     }
-                    mHoverView.invalidateView();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
                 }
             });
+           sbEraseSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+               @Override
+               public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                   txtEraseSizeCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) (progress / 2))}));
+                   mHoverView.setEraseOffset( progress);
+               }
+
+               @Override
+               public void onStartTrackingTouch(SeekBar seekBar) {
+
+               }
+
+               @Override
+               public void onStopTrackingTouch(SeekBar seekBar) {
+
+               }
+           });
+            sbAutoErasePortion.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    try {
+
+
+                        txtAutoEraseCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) progress)}));
+                        mHoverView.setMagicThreshold(progress);
+                        int mode = mHoverView.getMode();
+                        HoverView hoverView = mHoverView;
+                        if (mode == HoverView.MAGIC_MODE) {
+                            mHoverView.magicEraseBitmap();
+                        } else {
+                            mode = mHoverView.getMode();
+                            hoverView = mHoverView;
+                            if (mode == HoverView.MAGIC_MODE_RESTORE) {
+                                mHoverView.magicRestoreBitmap();
+                            }
+                        }
+                        mHoverView.invalidateView();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+
+
+
+
 
 
             resetCircleSize();
@@ -293,13 +334,11 @@ public class EraseActivity extends AppCompatActivity {
         if (viewTreeObserver.isAlive()) {
             viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 public void onGlobalLayout() {
-                    if (Build.VERSION.SDK_INT >= 16) {
-                        mainLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                        image_height = mainLayout.getMeasuredHeight();
-                        Log.e("TAG", "relative height view tree:==>" + image_height);
-                        Log.e("TAG", "isAlive baaar");
-                        setBitmapHeightAndWidth();
-                    }
+                    mainLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    image_height = mainLayout.getMeasuredHeight();
+                    Log.e("TAG", "relative height view tree:==>" + image_height);
+                    Log.e("TAG", "isAlive baaar");
+                    setBitmapHeightAndWidth();
                 }
             });
         }

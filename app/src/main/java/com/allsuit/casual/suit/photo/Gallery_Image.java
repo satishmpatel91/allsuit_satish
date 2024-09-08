@@ -6,17 +6,24 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.PixelCopy;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -246,6 +253,28 @@ public class Gallery_Image extends Activity {
     }
 
 
+    public void  saveBitmap(Bitmap bitmap,View view){
+
+        int layoutHight = view.getHeight();
+        int layoutWidth = view.getWidth();
+        Log.e("HHHH", "Height" + layoutHight + "wid" + windowwidth);
+
+        Uri saveimage = appUtility.savePhoto(bitmap, layoutWidth, layoutHight);
+
+        applicationManager.setImagesavepath(saveimage);
+        Toast.makeText(getApplicationContext(),
+                "Image Saved:-" + appUtility.getfilesavedname().getPath(),
+                Toast.LENGTH_LONG).show();
+
+        if (applicationManager.getFaceBitmap() != null) {
+            appUtility.saveFace(applicationManager.getFaceBitmap());
+
+        }
+
+        startActivity(new Intent(Gallery_Image.this,
+                ResultActivity.class));
+        finish();
+    }
     private void setonClickListners() {
 
         stickerView.setOnStickerOperationListener(new com.allsuit.casual.suit.photo.sticker.StickerView.OnStickerOperationListener() {
@@ -407,28 +436,39 @@ public class Gallery_Image extends Activity {
                 }
 
 
-                View v1 = frm_preview;
-                v1.setDrawingCacheEnabled(true);
-                Bitmap bm = v1.getDrawingCache();
-                int layoutHight = v1.getHeight();
-                int layoutWidth = v1.getWidth();
-                Log.e("HHHH", "Height" + layoutHight + "wid" + windowwidth);
+                View view = frm_preview;
+                view.setDrawingCacheEnabled(true);
 
-                Uri saveimage = appUtility.savePhoto(bm, layoutWidth, layoutHight);
 
-                applicationManager.setImagesavepath(saveimage);
-                Toast.makeText(getApplicationContext(),
-                        "Image Saved:-" + appUtility.getfilesavedname().getPath(),
-                        Toast.LENGTH_LONG).show();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    // For Android O and above, use PixelCopy
+                    final Bitmap temporalBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+                    final Window window = ((android.app.Activity) view.getContext()).getWindow();
+                    final int[] location = new int[2];
+                    view.getLocationInWindow(location);
+                    final Rect viewRectangle = new Rect(location[0], location[1], location[0] + view.getWidth(), location[1] + view.getHeight());
 
-                if (applicationManager.getFaceBitmap() != null) {
-                    appUtility.saveFace(applicationManager.getFaceBitmap());
-
+                    PixelCopy.request(window, viewRectangle, temporalBitmap, new PixelCopy.OnPixelCopyFinishedListener() {
+                        @Override
+                        public void onPixelCopyFinished(int copyResult) {
+                            if (copyResult == PixelCopy.SUCCESS) {
+                                saveBitmap(temporalBitmap,view);
+                            } else {
+                                throw new RuntimeException("Error while copying pixels, copy result: " + copyResult);
+                            }
+                        }
+                    }, new Handler(Looper.getMainLooper()));
+                } else {
+                    // For older versions, draw the view into a bitmap directly
+                    final Bitmap temporalBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.RGB_565);
+                    final Canvas canvas = new Canvas(temporalBitmap);
+                    view.draw(canvas);
+                    canvas.setBitmap(null);
+                    saveBitmap(temporalBitmap,view);
                 }
 
-                startActivity(new Intent(Gallery_Image.this,
-                        ResultActivity.class));
-                finish();
+
+
 
 
             }
@@ -570,6 +610,7 @@ public class Gallery_Image extends Activity {
         });
 
     }
+
 
     public static Bitmap createFlippedBitmap(Bitmap source, boolean xFlip, boolean yFlip) {
         Matrix matrix = new Matrix();

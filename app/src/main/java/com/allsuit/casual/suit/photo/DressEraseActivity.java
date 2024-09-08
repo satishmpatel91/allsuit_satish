@@ -41,7 +41,7 @@ public class DressEraseActivity extends AppCompatActivity {
     private TextView txtTitleText;
     private LinearLayout lnvEraseHeader;
     private TextView txtOffsetCount;
-    private IndicatorSeekBar sbOffset;
+    private SeekBar sbOffset;
     private ImageView imgBack;
     private ImageView imgDone;
     private RelativeLayout mainLayout;
@@ -50,7 +50,7 @@ public class DressEraseActivity extends AppCompatActivity {
 
     private LinearLayout lnvAutoErase;
     private TextView txtAutoEraseCount;
-    private IndicatorSeekBar sbAutoErasePortion;
+    private SeekBar sbAutoErasePortion;
     private LinearLayout lnvErase;
     private TextView txtEraseSizeCount;
     private SeekBar sbEraseSize;
@@ -218,15 +218,27 @@ public class DressEraseActivity extends AppCompatActivity {
                 }
             });
 
-            sbOffset.addOnProgressChangeListener(progress -> {
-                txtOffsetCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) (progress / 4))}));
-                //   Log.e("OFFSET MODE",mHoverView.getMode()+"");
-                if (mHoverView.getMode() == 0 || HoverView.UNERASE_MODE == mHoverView.getMode()) {
-                    mHoverView.setCircleSpace((int) progress);
-                    SharedPrefs.save(DressEraseActivity.this, SharedPrefs.ERASER_SIZE, progress);
-                    Log.e("OFFSET",progress+"");
+            sbOffset.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    if (mHoverView.getMode() == 0 || HoverView.UNERASE_MODE == mHoverView.getMode()) {
+                        mHoverView.setCircleSpace((int) progress);
+                        SharedPrefs.save(DressEraseActivity.this, SharedPrefs.ERASER_SIZE, progress);
+                        Log.e("OFFSET",progress+"");
+                    }
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
                 }
             });
+
 
             sbEraseSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -246,23 +258,36 @@ public class DressEraseActivity extends AppCompatActivity {
                 }
             });
 
-
-            sbAutoErasePortion.addOnProgressChangeListener( progress -> {
-                txtAutoEraseCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) progress)}));
-                mHoverView.setMagicThreshold((int) progress);
-                int mode = mHoverView.getMode();
-                HoverViewDress hoverView = mHoverView;
-                if (mode == HoverView.MAGIC_MODE) {
-                    mHoverView.magicEraseBitmap();
-                } else {
-                    mode = mHoverView.getMode();
-                    hoverView = mHoverView;
-                    if (mode == HoverView.MAGIC_MODE_RESTORE) {
-                        mHoverView.magicRestoreBitmap();
+            sbAutoErasePortion.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    txtAutoEraseCount.setText(String.format("%02d", new Object[]{Integer.valueOf((int) progress)}));
+                    mHoverView.setMagicThreshold( progress);
+                    int mode = mHoverView.getMode();
+                    HoverViewDress hoverView = mHoverView;
+                    if (mode == HoverView.MAGIC_MODE) {
+                        mHoverView.magicEraseBitmap();
+                    } else {
+                        mode = mHoverView.getMode();
+                        hoverView = mHoverView;
+                        if (mode == HoverView.MAGIC_MODE_RESTORE) {
+                            mHoverView.magicRestoreBitmap();
+                        }
                     }
+                    mHoverView.invalidateView();
                 }
-                mHoverView.invalidateView();
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
             });
+
 
 
             resetCircleSize();
