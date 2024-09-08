@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.adapter.MostDownloadAdapter;
 import com.allsuit.casual.suit.photo.adapter.TopAppAdapter;
 import com.allsuit.casual.suit.photo.utility.AppUtility;

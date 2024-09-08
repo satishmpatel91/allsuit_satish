@@ -11,7 +11,7 @@ import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.StickerActivity;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;

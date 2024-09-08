@@ -23,7 +23,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.MotionEventCompat;
 import androidx.core.view.ViewCompat;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 
 import java.io.File;
 import java.lang.annotation.Retention;

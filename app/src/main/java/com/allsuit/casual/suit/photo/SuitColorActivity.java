@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.squareup.picasso.Picasso;
 import com.warkiz.widget.IndicatorSeekBar;
 

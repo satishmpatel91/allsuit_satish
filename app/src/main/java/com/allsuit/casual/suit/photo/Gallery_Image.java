@@ -38,7 +38,7 @@ import com.allsuit.casual.suit.photo.sticker.Sticker;
 import com.allsuit.casual.suit.photo.sticker.StickerView;
 import com.allsuit.casual.suit.photo.utility.AppUtility;
 import com.allsuit.casual.suit.photo.utility.Constant;
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.canhub.cropper.CropImage;
 import com.squareup.picasso.Picasso;
 

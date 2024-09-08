@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.adapter.MyPhotoAdapter;
 import com.allsuit.casual.suit.photo.model.FileModel;
 import com.allsuit.casual.suit.photo.utility.AppUtility;

@@ -25,7 +25,7 @@ import android.view.View;
 
 
 import com.allsuit.casual.suit.photo.EraseActivity;
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 
 import java.io.File;
 import java.util.ArrayList;

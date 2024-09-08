@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

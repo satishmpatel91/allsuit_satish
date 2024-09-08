@@ -11,7 +11,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.utility.AppUtility;
 import com.allsuit.casual.suit.photo.utility.Constant;
 import com.allsuit.casual.suit.photo.utility.JSONParser;

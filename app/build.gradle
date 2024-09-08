@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 35
-    namespace 'com.allsuit.casualsuit'
+    namespace 'com.allsuit.casual.suit.photo'
 
     defaultConfig {
         applicationId "com.allsuit.casual.suit.photo"

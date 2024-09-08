@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.adapter.MySavedFaceAdapter;
 import com.allsuit.casual.suit.photo.model.FileModel;
 import com.allsuit.casual.suit.photo.utility.AppUtility;

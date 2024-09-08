@@ -2,10 +2,11 @@ package com.allsuit.casual.suit.photo.holder;
 
 import android.view.View;
 
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.leodroidcoder.genericadapter.BaseViewHolder;
 import com.allsuit.casual.suit.photo.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 import com.allsuit.casual.suit.photo.model.Color;
-import com.allsuit.casualsuit.R;
+
 import com.mikhaellopez.circleview.CircleView;
 
 public class ColorHolder extends BaseViewHolder<Color, OnRecyclerItemClickListener> {

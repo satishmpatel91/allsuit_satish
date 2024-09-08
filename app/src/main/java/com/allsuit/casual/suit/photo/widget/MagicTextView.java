@@ -24,7 +24,7 @@ import android.view.View;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 
 import java.util.ArrayList;
 import java.util.WeakHashMap;

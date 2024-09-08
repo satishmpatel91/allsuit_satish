@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="auto"
-
     android:versionName="3.2">
 
     <!--<uses-sdk
@@ -28,7 +27,8 @@
 
     <permission
         android:name="android.permission.FLASHLIGHT"
-        android:required="false" />
+        android:required="false"
+        tools:ignore="ReservedSystemPermission" />
 
 
     <application

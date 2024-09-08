@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 
 public class TempActivity extends Activity {
 

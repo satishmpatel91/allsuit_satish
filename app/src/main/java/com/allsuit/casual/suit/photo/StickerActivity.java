@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.adapter.StickerAdapter;
 import com.allsuit.casual.suit.photo.adapter.StickerFooterAdapter;
 import com.allsuit.casual.suit.photo.model.StickerImage;

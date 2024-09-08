@@ -8,7 +8,7 @@ import android.widget.SeekBar;
 
 import androidx.fragment.app.Fragment;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 
 
 public class EditImageFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {

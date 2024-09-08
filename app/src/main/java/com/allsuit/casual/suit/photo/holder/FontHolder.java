@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.allsuit.casual.suit.photo.leodroidcoder.genericadapter.BaseViewHolder;
 import com.allsuit.casual.suit.photo.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 import com.allsuit.casual.suit.photo.model.Font;
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 
 import io.github.inflationx.calligraphy3.TypefaceUtils;
 

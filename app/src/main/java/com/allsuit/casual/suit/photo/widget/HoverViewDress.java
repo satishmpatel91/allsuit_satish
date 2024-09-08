@@ -24,7 +24,7 @@ import android.view.View;
 import androidx.core.internal.view.SupportMenu;
 import androidx.core.view.ViewCompat;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.DressEraseActivity;
 
 

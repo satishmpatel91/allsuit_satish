@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 
 /**
  * Customize your sticker with text and image background.

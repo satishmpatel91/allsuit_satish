@@ -29,7 +29,7 @@ import com.allsuit.casual.suit.photo.model.FontStyle;
 import com.allsuit.casual.suit.photo.model.StickerData;
 import com.allsuit.casual.suit.photo.utility.DoubleClickListener;
 import com.allsuit.casual.suit.photo.utility.TextViewOutline;
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.google.android.material.tabs.TabLayout;
 import com.warkiz.widget.IndicatorSeekBar;
 

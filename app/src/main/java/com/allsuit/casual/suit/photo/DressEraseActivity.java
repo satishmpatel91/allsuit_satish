@@ -26,7 +26,7 @@ import com.allsuit.casual.suit.photo.utility.DisplayMetricsHandler;
 import com.allsuit.casual.suit.photo.utility.SharedPrefs;
 import com.allsuit.casual.suit.photo.widget.HoverView;
 import com.allsuit.casual.suit.photo.widget.HoverViewDress;
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener;
 import com.google.android.material.tabs.TabLayout.Tab;

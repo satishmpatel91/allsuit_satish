@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 
 import androidx.multidex.MultiDex;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.model.Color;
 import com.allsuit.casual.suit.photo.model.Font;
 import com.allsuit.casual.suit.photo.utility.Constant;

@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.StickerActivity;
 
 import com.squareup.picasso.Callback;
@@ -20,8 +20,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import static com.allsuit.casualsuit.R.color.rang;
-import static com.allsuit.casualsuit.R.color.rang_dark;
+import static com.allsuit.casual.suit.photo.R.color.rang;
+import static com.allsuit.casual.suit.photo.R.color.rang_dark;
 
 
 public class StickerFooterAdapter extends RecyclerView.Adapter<StickerFooterAdapter.Holder>  {

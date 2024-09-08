@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.utility.AppUtility;
 
 import java.io.File;

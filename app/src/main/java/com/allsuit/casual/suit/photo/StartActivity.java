@@ -29,14 +29,17 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
-import androidx.multidex.BuildConfig;
+
+
 
 import com.allsuit.casual.suit.photo.adapter.TradingAppAdapter;
 import com.allsuit.casual.suit.photo.utility.AppUtility;
 import com.allsuit.casual.suit.photo.utility.Constant;
 import com.allsuit.casual.suit.photo.utility.DisplayMetricsHandler;
 import com.allsuit.casual.suit.photo.utility.JSONParser;
-import com.allsuit.casualsuit.R;
+
+
+
 import com.canhub.cropper.CropImage;
 
 import org.apache.http.NameValuePair;
@@ -292,7 +295,7 @@ public class StartActivity extends Activity {
 
                 if (photoFile != null) {
                     mCapturePhotoUri = FileProvider.getUriForFile(StartActivity.this,
-                            BuildConfig.APPLICATION_ID + ".provider",
+                              getPackageName()+".provider",
                             photoFile);
                     mPhotoFile = photoFile;
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturePhotoUri);

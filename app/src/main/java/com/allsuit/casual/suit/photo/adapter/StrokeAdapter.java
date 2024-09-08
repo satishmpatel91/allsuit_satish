@@ -7,7 +7,7 @@ import com.allsuit.casual.suit.photo.holder.StrokeHolder;
 import com.allsuit.casual.suit.photo.leodroidcoder.genericadapter.GenericRecyclerViewAdapter;
 import com.allsuit.casual.suit.photo.leodroidcoder.genericadapter.OnRecyclerItemClickListener;
 import com.allsuit.casual.suit.photo.model.Color;
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 
 import org.jetbrains.annotations.NotNull;
 

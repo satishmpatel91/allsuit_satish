@@ -24,7 +24,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.allsuit.casualsuit.R;
+import com.allsuit.casual.suit.photo.R;
 import com.allsuit.casual.suit.photo.adapter.TemplateAdapter;
 import com.allsuit.casual.suit.photo.utility.AppUtility;
 import com.allsuit.casual.suit.photo.utility.Constant;
